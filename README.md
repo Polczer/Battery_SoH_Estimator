@@ -44,16 +44,16 @@ Data cache is also included and stored in `loaded_files_cache.pkl` located under
 
 1. Clone the repository:
 
-git clone <repository_url>
-cd <repository_folder>
+```bash git clone https://github.com/Polczer/Battery_SoH_Estimator.git ```
+```bash cd Battery_SoH_Estimator ```
 
 2. Install dependencies:
 
-pip install -r requirements.txt
+```bash pip install -r requirements.txt ```
 
 3. Launch Jupyter Notebook:
 
-jupyter notebook
+```bash jupyter notebook ```
 
 4. Open `notebook.ipynb` and run the cells step by step.
 
@@ -68,6 +68,6 @@ This project is developed for academic purposes. License terms can be specified 
 
 ## Author
 
-Nikolai Matgafurov
-Institution: Saint Petersburg Electrotechnical University
+Nikolai Matgafurov \
+Institution: Saint Petersburg Electrotechnical University \
 Contact: valak3j3@gmail.com
