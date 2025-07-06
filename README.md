@@ -1,73 +1,66 @@
 # Estimation of State of Health (SoH) for Li-ion Batteries Using OCV Tests
 
 ## Description
+This project estimates the State of Health (SoH) of lithium-ion batteries using:
+- Incremental Current Open Circuit Voltage (OCV) tests  
+- Dynamic Driving Cycle tests:
+  - Dynamic Stress Test (DST)
+  - Federal Urban Driving Schedule (FUDS)
+  - US06
 
-## Description
+Machine learning models predict remaining capacity and degradation patterns to optimize Battery Management Systems (BMS).
 
-This project aims to estimate the State of Health (SoH) of lithium-ion batteries using both Incremental Current Open Circuit Voltage (OCV) tests and Dynamic Driving Cycle tests (Dynamic Stress Test, Federal Urban Driving Schedule, US06). 
-The collected data is processed and used to train machine learning regression models to predict the remaining capacity and performance degradation. 
-The results help evaluate battery reliability and support further optimization of battery management systems.
-
-## Technologies Used
-
-- Python 3.13.2
-- Jupyter Notebook
-- pandas
-- numpy
-- scikit-learn
-- matplotlib
-- seaborn
+## Technologies
+- **Python 3.13.2** (with `requirements.txt` for dependencies)
+- **Core Libraries**:
+  ```python
+  pandas, numpy, scikit-learn, matplotlib, seaborn
+  ```
+- **Environment**: Jupyter Notebook
 
 ## Data Structure
+```
+Battery_SoH_Estimator/
+├── data/
+│   ├── raw/
+│   │   ├── OCV-SOC/Incremental_Current_OCV/  # XLSX files for:
+│   │   │   ├── Sample1 (0°C, 25°C, 45°C)
+│   │   │   └── Sample2 (0°C, 25°C, 45°C)
+│   │   └── Dynamic_tests/  # DST, FUDS, US06
+│   └── cache/loaded_files_cache.pkl  # Preprocessed data
+└── notebook.ipynb  # Main analysis
+```
 
-Raw test data is stored in `.xlsx` files located under:
-../data/raw/OCV-SOC/Incremental_Current_OCV/
-../data/raw/Dynamic_tests/
+## Installation & Usage
+1. **Clone and setup**:
+   ```bash
+   git clone https://github.com/Polczer/Battery_SoH_Estimator.git
+   cd Battery_SoH_Estimator
+   ```
 
-The OCV dataset includes:
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- Sample 1 at 0°C, 25°C, 45°C
-- Sample 2 at 0°C, 25°C, 45°C
+3. **Launch analysis**:
+   ```bash
+   jupyter notebook
+   ```
+   - Open `notebook.ipynb`
+   - Run cells sequentially
 
-The Dynamic dataset includes:
-
-- Dynamic Stress Test
-- Federal Urban Driving Schedule
-- US06
-
-Data is loaded and preprocessed using a custom load_data_to_dict function.
-
-Data cache is also included and stored in `loaded_files_cache.pkl` located under:
-../data/cache/
-
-## How to Run:
-
-1. Clone the repository:
-
-```bash git clone https://github.com/Polczer/Battery_SoH_Estimator.git ```
-```bash cd Battery_SoH_Estimator ```
-
-2. Install dependencies:
-
-```bash pip install -r requirements.txt ```
-
-3. Launch Jupyter Notebook:
-
-```bash jupyter notebook ```
-
-4. Open `notebook.ipynb` and run the cells step by step.
-
-## Expected Results
-
-The notebook computes the battery SoH and evaluates the estimation accuracy using standard metrics (e.g., Mean Absolute Error). 
-Visualizations are provided for better interpretation.
+## Expected Outputs
+- SoH estimation metrics (MAE, RMSE)
+- Degradation visualizations:
+  - Capacity fade curves
+  - Voltage hysteresis plots
+  - Feature importance diagrams
 
 ## License
+Academic use only. For commercial applications, please contact the author.
 
-This project is developed for academic purposes. License terms can be specified here if applicable.
-
-## Author
-
-Nikolai Matgafurov \
-Institution: Saint Petersburg Electrotechnical University \
-Contact: valak3j3@gmail.com
+## Contact
+**Nikolai Matgafurov**  
+[Saint Petersburg Electrotechnical University]  
+📧 valak3j3@gmail.com
