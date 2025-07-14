@@ -1,66 +1,71 @@
-# Estimation of State of Health (SoH) for Li-ion Batteries Using OCV Tests
+# Battery State of Health (SoH) Estimation Using OCV and Dynamic Tests
 
-## Description
-This project estimates the State of Health (SoH) of lithium-ion batteries using:
-- Incremental Current Open Circuit Voltage (OCV) tests  
-- Dynamic Driving Cycle tests:
-  - Dynamic Stress Test (DST)
-  - Federal Urban Driving Schedule (FUDS)
-  - US06
+## Project Overview
+Machine learning solution for predicting lithium-ion battery degradation using:
+- **OCV tests** at 0°C/25°C/45°C (Sample1 & Sample2)
+- **Dynamic profiles**: DST, FUDS, US06
+- Regression models for capacity fade prediction
 
-Machine learning models predict remaining capacity and degradation patterns to optimize Battery Management Systems (BMS).
+## Key Features
+- Data preprocessing pipeline
+- Feature engineering for battery parameters
+- SoH prediction models (MAE < 1%)
+- Interactive Jupyter visualization
 
-## Technologies
-- **Python 3.13.2** (with `requirements.txt` for dependencies)
-- **Core Libraries**:
-  ```python
-  pandas, numpy, scikit-learn, matplotlib, seaborn
-  ```
-- **Environment**: Jupyter Notebook
-
-## Data Structure
-```
-Battery_SoH_Estimator/
-├── data/
-│   ├── raw/
-│   │   ├── OCV-SOC/Incremental_Current_OCV/  # XLSX files for:
-│   │   │   ├── Sample1 (0°C, 25°C, 45°C)
-│   │   │   └── Sample2 (0°C, 25°C, 45°C)
-│   │   └── Dynamic_tests/  # DST, FUDS, US06
-│   └── cache/loaded_files_cache.pkl  # Preprocessed data
-└── notebook.ipynb  # Main analysis
+## Tech Stack
+```python
+Python 3.13.2 | Jupyter | pandas | scikit-learn | matplotlib | seaborn
 ```
 
-## Installation & Usage
-1. **Clone and setup**:
-   ```bash
-   git clone https://github.com/Polczer/Battery_SoH_Estimator.git
-   cd Battery_SoH_Estimator
-   ```
+## Repository Structure
+```
+data/
+├── raw/OCV-SOC/         # Raw OCV test files (.xlsx)
+├── raw/Dynamic_tests/   # Driving cycle datasets
+└── cache/               # Preprocessed data
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+notebooks/               # Analysis notebooks
+src/                     # Python package
+models/                  # Trained model binaries
+images/                  # Generated plots
+```
 
-3. **Launch analysis**:
-   ```bash
-   jupyter notebook
-   ```
-   - Open `notebook.ipynb`
-   - Run cells sequentially
+## Quick Start
+```bash
+git clone https://github.com/Polczer/Battery_SoH_Estimator.git
+cd Battery_SoH_Estimator
+pip install -r requirements.txt
+jupyter notebook
+```
 
-## Expected Outputs
-- SoH estimation metrics (MAE, RMSE)
-- Degradation visualizations:
-  - Capacity fade curves
-  - Voltage hysteresis plots
-  - Feature importance diagrams
+## Output Visualizations
+1. **Feature Correlation**  
+   ![Correlation Matrix](./images/correlation_matrix.png)  
+   *Identifies key relationships between battery parameters*
+
+2. **Feature Correlated with SoH**  
+   ![Correlation Analysis](./images/correlation_analysis.png)
+   *Determining the correlation coefficient for each feature*
+
+3. **SoH Prediction Accuracy**  
+   ![True vs Predicted](./images/evaluating.png)  
+   *Model performance on test data (MAE < 1%)*
+
+4. **Real-time Simulation**  
+   ![Test Prediction](./images/real_work.png)  
+   *Continuous SoH estimation on dynamic profiles*
+
+## Saving Results
+```python
+import matplotlib.pyplot as plt
+plt.savefig('./images/your_plot.png', dpi=300, bbox_inches='tight')
+```
 
 ## License
-Academic use only. For commercial applications, please contact the author.
+Academic use permitted | Commercial inquiries: valak3j3@gmail.com
 
 ## Contact
 **Nikolai Matgafurov**  
-[Saint Petersburg Electrotechnical University]  
-📧 valak3j3@gmail.com
+🔋 Battery Analytics Researcher  
+📧 valak3j3@gmail.com  
+🏛 ETU "LETI" Saint Petersburg
